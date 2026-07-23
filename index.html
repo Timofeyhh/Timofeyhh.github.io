@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Макаров Тимофей — Frontend-разработчик</title>
+<style>
+  :root{
+    --bg:#0f1115;
+    --panel:#171a21;
+    --border:#262b35;
+    --text:#e8eaf0;
+    --muted:#9aa1b0;
+    --accent:#5b8cff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
+  }
+  header{
+    max-width:960px;
+    margin:0 auto;
+    padding:64px 24px 32px;
+  }
+  header h1{
+    font-size:32px;
+    margin:0 0 6px;
+  }
+  header p.role{
+    color:var(--accent);
+    font-size:18px;
+    margin:0 0 16px;
+    font-weight:600;
+  }
+  header p.about{
+    color:var(--muted);
+    max-width:640px;
+    margin:0 0 20px;
+  }
+  header .links{display:flex;gap:10px;flex-wrap:wrap;}
+  header a.contact{
+    color:var(--text);
+    text-decoration:none;
+    border:1px solid var(--border);
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:14px;
+  }
+  header a.contact:hover{border-color:var(--accent);}
+  header a.contact.gh{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+    font-weight:600;
+  }
+  header a.contact.gh:hover{opacity:.88;}
+
+  main{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 24px 80px;
+  }
+
+  .project{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    margin-bottom:40px;
+  }
+  .project-header{
+    padding:24px 24px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .project-header h2{
+    margin:0 0 6px;
+    font-size:20px;
+  }
+  .project-header p{
+    margin:0;
+    color:var(--muted);
+    font-size:14px;
+    max-width:560px;
+  }
+  .project-header a.open{
+    flex-shrink:0;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .project-header a.open:hover{opacity:.88;}
+  .project-header .btns{display:flex;gap:8px;flex-shrink:0;align-items:center;}
+  .project-header a.code{
+    color:var(--muted);
+    text-decoration:none;
+    border:1px solid var(--border);
+    padding:8px 16px;
+    border-radius:8px;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  .project-header a.code:hover{border-color:var(--accent);color:var(--text);}
+
+  .frame-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    background:#0a0b0e;
+    border-top:1px solid var(--border);
+  }
+  .frame-wrap iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+  }
+  .frame-fallback{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    color:var(--muted);
+    font-size:14px;
+    text-align:center;
+    padding:24px;
+    background:#0a0b0e;
+  }
+  .frame-fallback a{
+    color:#fff;
+    background:var(--accent);
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+  }
+
+  .placeholder{
+    padding:40px 24px;
+    text-align:center;
+    color:var(--muted);
+    font-size:14px;
+    border:1px dashed var(--border);
+    border-radius:12px;
+    margin-bottom:40px;
+  }
+
+  .resume-card{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    background:linear-gradient(120deg,rgba(91,140,255,.16),rgba(91,140,255,.03));
+    border:1px solid var(--border);border-radius:16px;padding:22px 26px;margin-bottom:40px;
+  }
+  .resume-card .rc-body{flex:1;min-width:160px;}
+  .resume-card h3{font-size:18px;}
+  .resume-card a.dl{
+    background:var(--accent);color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;
+    font-size:14px;font-weight:600;white-space:nowrap;transition:transform .15s,opacity .2s;
+  }
+  .resume-card a.dl:hover{opacity:.9;transform:translateY(-2px);}
+
+  footer{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 24px 60px;
+    color:var(--muted);
+    font-size:13px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Макаров Тимофей Андреевич</h1>
+  <p class="role">Frontend-разработчик</p>
+  <p class="about">Собираю сайты от идеи до запуска: вёрстка под все экраны, анимации, 3D, интеграции. Ниже — живые демо, а не картинки: листай и кликай прямо здесь, а код каждого проекта открыт на GitHub.</p>
+  <div class="links">
+    <a class="contact gh" href="https://github.com/Timofeyhh" target="_blank" rel="noopener">GitHub — Timofeyhh</a>
+    <a class="contact" href="mailto:makarovtimofej756@gmail.com">makarovtimofej756@gmail.com</a>
+  </div>
+</header>
+
+<main>
+
+  <div class="project">
+    <div class="project-header">
+      <div>
+        <h2>Сайт детского психолога — adekvat.online</h2>
+        <p>Коммерческий проект. Многостраничный сайт практикующего детского психолога: подход к работе, библиотека книг с живым поиском на JS, ответы на вопросы родителей, отзывы и запись на приём. Чистый HTML/CSS/JS без фреймворков и сборки.</p>
+      </div>
+      <div class="btns">
+        <a class="code" href="https://github.com/Timofeyhh/adekvat-online" target="_blank" rel="noopener">Код</a>
+        <a class="open" href="https://adekvat.online/index.html" target="_blank" rel="noopener">Открыть сайт →</a>
+      </div>
+    </div>
+    <div class="frame-wrap">
+      <iframe src="https://adekvat.online/index.html" loading="lazy" referrerpolicy="no-referrer"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        onerror="this.closest('.frame-wrap').querySelector('.frame-fallback').style.display='flex'"></iframe>
+      <div class="frame-fallback" style="display:none;">
+        Сайт не встраивается в этот блок (защита от iframe).
+        <a href="https://adekvat.online/index.html" target="_blank" rel="noopener">Открыть напрямую</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <div>
+        <h2>«Хотики» — hotiki.ru</h2>
+        <p>Коммерческий проект. Промо-сайт вселенной детской книги: анимированный мир персонажей на CSS (маски, градиенты, keyframes), история, магазин и переход в Telegram-сообщество. Адаптив с упором на мобильные — основная аудитория заходит с телефонов.</p>
+      </div>
+      <div class="btns">
+        <a class="code" href="https://github.com/Timofeyhh/hotiki" target="_blank" rel="noopener">Код</a>
+        <a class="open" href="https://hotiki.ru" target="_blank" rel="noopener">Открыть сайт →</a>
+      </div>
+    </div>
+    <div class="frame-wrap">
+      <iframe src="https://hotiki.ru" loading="lazy" referrerpolicy="no-referrer"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        onerror="this.closest('.frame-wrap').querySelector('.frame-fallback').style.display='flex'"></iframe>
+      <div class="frame-fallback" style="display:none;">
+        Сайт не встраивается в этот блок (защита от iframe).
+        <a href="https://hotiki.ru" target="_blank" rel="noopener">Открыть напрямую</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <div>
+        <h2>StartL — лендинг для инвесторов</h2>
+        <p>Собственный продукт: дейтинг без свайпов, где люди видят друг друга на живой карте города. Лендинг: 3D-сфера из 2 600 частиц на Three.js с перекраской под секции, GSAP-хореография скролла, инерционный скролл Lenis — всё в одном HTML-файле без сборки. В демо переключи тарифы радиуса 50 м / 1 км / 10 км.</p>
+      </div>
+      <div class="btns">
+        <a class="code" href="https://github.com/Timofeyhh/startl-landing" target="_blank" rel="noopener">Код</a>
+        <a class="open" href="https://timofeyhh.github.io/startl-landing/" target="_blank" rel="noopener">Открыть сайт →</a>
+      </div>
+    </div>
+    <div class="frame-wrap">
+      <iframe src="https://timofeyhh.github.io/startl-landing/" loading="lazy"></iframe>
+    </div>
+  </div>
+
+
+</main>
+
+<footer>
+  © 2026 Макаров Тимофей. Портфолио размещено бесплатно (например, Vercel / Netlify / GitHub Pages — без оплаты и без обязательных условий для статического сайта такого размера).
+</footer>
+
+</body>
+</html>
