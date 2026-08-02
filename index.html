@@ -4,116 +4,190 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Макаров Тимофей — Frontend-разработчик</title>
+<meta name="description" content="Портфолио фронтенд-разработчика Тимофея Макарова: коммерческие сайты, 3D на Three.js, Telegram-боты и веб-приложения. Живые демо прямо на странице.">
+<meta property="og:title" content="Макаров Тимофей — Frontend-разработчик">
+<meta property="og:description" content="Коммерческие сайты, 3D на Three.js, Telegram-боты и веб-приложения. Живые демо прямо на странице.">
+<meta property="og:type" content="website">
 <style>
   :root{
     --bg:#0f1115;
     --panel:#171a21;
+    --panel-2:#1c202a;
     --border:#262b35;
     --text:#e8eaf0;
     --muted:#9aa1b0;
+    --dim:#6e7686;
     --accent:#5b8cff;
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.5;
+    -webkit-font-smoothing:antialiased;
   }
-  header{
-    max-width:960px;
-    margin:0 auto;
-    padding:64px 24px 32px;
-  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- шапка ---------- */
+  header{padding:72px 0 40px;}
   header h1{
-    font-size:32px;
+    font-size:34px;
+    line-height:1.15;
     margin:0 0 6px;
+    letter-spacing:-.02em;
   }
   header p.role{
     color:var(--accent);
     font-size:18px;
-    margin:0 0 16px;
+    margin:0 0 18px;
     font-weight:600;
   }
   header p.about{
     color:var(--muted);
-    max-width:640px;
-    margin:0 0 20px;
+    max-width:660px;
+    margin:0 0 24px;
   }
   header .links{display:flex;gap:10px;flex-wrap:wrap;}
-  header a.contact{
+  a.contact{
     color:var(--text);
     text-decoration:none;
     border:1px solid var(--border);
-    padding:8px 14px;
-    border-radius:8px;
+    padding:9px 15px;
+    border-radius:9px;
     font-size:14px;
+    transition:border-color .18s,color .18s;
   }
-  header a.contact:hover{border-color:var(--accent);}
-  header a.contact.gh{
+  a.contact:hover{border-color:var(--accent);}
+  a.contact.gh{
     background:var(--accent);
     border-color:var(--accent);
     color:#fff;
     font-weight:600;
   }
-  header a.contact.gh:hover{opacity:.88;}
+  a.contact.gh:hover{opacity:.88;}
 
-  main{
-    max-width:960px;
-    margin:0 auto;
-    padding:0 24px 80px;
+  /* ---------- полоска фактов ---------- */
+  .facts{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    margin:36px 0 0;
+  }
+  .facts div{background:var(--panel);padding:18px 20px;}
+  .facts b{display:block;font-size:22px;line-height:1.2;margin-bottom:2px;}
+  .facts span{color:var(--dim);font-size:13px;}
+  @media(max-width:620px){
+    .facts{grid-template-columns:repeat(2,1fr);}
   }
 
+  /* ---------- заголовок раздела ---------- */
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin:64px 0 24px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+  }
+  .section-head h2{margin:0;font-size:22px;letter-spacing:-.01em;}
+  .section-head span{color:var(--dim);font-size:14px;}
+  main > .section-head:first-child{margin-top:40px;}
+  @media(max-width:560px){
+    .section-head{flex-direction:column;gap:4px;}
+  }
+
+  main{padding-bottom:40px;}
+
+  /* ---------- карточка проекта с демо ---------- */
   .project{
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:16px;
     overflow:hidden;
-    margin-bottom:40px;
+    margin-bottom:32px;
   }
   .project-header{
-    padding:24px 24px 16px;
+    padding:24px 24px 18px;
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
     flex-wrap:wrap;
-    gap:12px;
+    gap:14px;
   }
-  .project-header h2{
-    margin:0 0 6px;
+  .project-header .info{flex:1;min-width:260px;}
+  .tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:5px;
+    margin-bottom:9px;
+  }
+  .tag.commercial{background:rgba(91,140,255,.16);color:#9dbaff;}
+  .tag.own{background:rgba(154,161,176,.14);color:var(--muted);}
+  .project-header h3{
+    margin:0 0 8px;
     font-size:20px;
+    letter-spacing:-.01em;
   }
   .project-header p{
     margin:0;
     color:var(--muted);
     font-size:14px;
-    max-width:560px;
+    max-width:600px;
   }
-  .project-header a.open{
-    flex-shrink:0;
+  .btns{display:flex;gap:8px;flex-shrink:0;align-items:center;flex-wrap:wrap;}
+  a.open{
     background:var(--accent);
     color:#fff;
     text-decoration:none;
-    padding:8px 16px;
-    border-radius:8px;
+    padding:9px 16px;
+    border-radius:9px;
     font-size:14px;
     font-weight:600;
     white-space:nowrap;
+    transition:opacity .18s;
   }
-  .project-header a.open:hover{opacity:.88;}
-  .project-header .btns{display:flex;gap:8px;flex-shrink:0;align-items:center;}
-  .project-header a.code{
+  a.open:hover{opacity:.88;}
+  a.code{
     color:var(--muted);
     text-decoration:none;
     border:1px solid var(--border);
-    padding:8px 16px;
-    border-radius:8px;
+    padding:9px 16px;
+    border-radius:9px;
     font-size:14px;
     white-space:nowrap;
+    transition:border-color .18s,color .18s;
   }
-  .project-header a.code:hover{border-color:var(--accent);color:var(--text);}
+  a.code:hover{border-color:var(--accent);color:var(--text);}
 
+  /* ---------- стек ---------- */
+  .stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    padding:0 24px 18px;
+  }
+  .stack i{
+    font-style:normal;
+    font-size:12px;
+    color:var(--muted);
+    background:var(--panel-2);
+    border:1px solid var(--border);
+    padding:4px 9px;
+    border-radius:6px;
+  }
+
+  /* ---------- рамка демо ---------- */
   .frame-wrap{
     position:relative;
     width:100%;
@@ -145,68 +219,159 @@
     color:#fff;
     background:var(--accent);
     text-decoration:none;
-    padding:8px 16px;
-    border-radius:8px;
+    padding:9px 16px;
+    border-radius:9px;
     font-size:14px;
     font-weight:600;
   }
-
-  .placeholder{
-    padding:40px 24px;
-    text-align:center;
-    color:var(--muted);
-    font-size:14px;
-    border:1px dashed var(--border);
-    border-radius:12px;
-    margin-bottom:40px;
-  }
-
-  .resume-card{
-    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
-    background:linear-gradient(120deg,rgba(91,140,255,.16),rgba(91,140,255,.03));
-    border:1px solid var(--border);border-radius:16px;padding:22px 26px;margin-bottom:40px;
-  }
-  .resume-card .rc-body{flex:1;min-width:160px;}
-  .resume-card h3{font-size:18px;}
-  .resume-card a.dl{
-    background:var(--accent);color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;
-    font-size:14px;font-weight:600;white-space:nowrap;transition:transform .15s,opacity .2s;
-  }
-  .resume-card a.dl:hover{opacity:.9;transform:translateY(-2px);}
-
-  footer{
-    max-width:960px;
-    margin:0 auto;
-    padding:0 24px 60px;
-    color:var(--muted);
+  .hint{
+    padding:12px 24px;
+    border-top:1px solid var(--border);
+    color:var(--dim);
     font-size:13px;
   }
+
+  /* ---------- карточки приложений и ботов ---------- */
+  .apps{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  @media(max-width:760px){
+    .apps{grid-template-columns:1fr;}
+  }
+  .app{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .2s;
+  }
+  .app:hover{border-color:#333b49;}
+  .app .tag{align-self:flex-start;}
+  .app h3{margin:0 0 8px;font-size:18px;letter-spacing:-.01em;}
+  .app > p{margin:0 0 16px;color:var(--muted);font-size:14px;}
+  .app ul{
+    margin:0 0 18px;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+  }
+  .app li{
+    position:relative;
+    padding-left:18px;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+  .app li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:8px;
+    width:6px;
+    height:6px;
+    border-radius:2px;
+    background:var(--accent);
+    opacity:.65;
+  }
+  .app li code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12px;
+    color:#9dbaff;
+    background:rgba(91,140,255,.1);
+    padding:1px 5px;
+    border-radius:4px;
+  }
+  .app .stack{padding:0;margin-top:auto;}
+
+  /* ---------- подвал ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:32px 0 64px;
+    color:var(--dim);
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  footer a{color:var(--muted);text-decoration:none;}
+  footer a:hover{color:var(--text);}
 </style>
 </head>
 <body>
 
+<div class="wrap">
+
 <header>
   <h1>Макаров Тимофей Андреевич</h1>
   <p class="role">Frontend-разработчик</p>
-  <p class="about">Собираю сайты от идеи до запуска: вёрстка под все экраны, анимации, 3D, интеграции. Ниже — живые демо, а не картинки: листай и кликай прямо здесь, а код каждого проекта открыт на GitHub.</p>
+  <p class="about">Собираю сайты и сервисы от идеи до запуска: вёрстка под все экраны, анимация, 3D на Three.js, бэкенд и Telegram-боты. Ниже — живые демо, а не скриншоты: листайте и кликайте прямо здесь.</p>
   <div class="links">
     <a class="contact gh" href="https://github.com/Timofeyhh" target="_blank" rel="noopener">GitHub — Timofeyhh</a>
     <a class="contact" href="mailto:makarovtimofej756@gmail.com">makarovtimofej756@gmail.com</a>
+  </div>
+
+  <div class="facts">
+    <div><b>5</b><span>сайтов онлайн</span></div>
+    <div><b>3</b><span>проекта на Three.js</span></div>
+    <div><b>4</b><span>Telegram-бота</span></div>
+    <div><b>4</b><span>языка: JS, TS, Python, Go</span></div>
   </div>
 </header>
 
 <main>
 
-  <div class="project">
+  <div class="section-head" id="sites">
+    <h2>Сайты</h2>
+    <span>живые демо — можно листать и кликать прямо в рамке</span>
+  </div>
+
+  <!-- ===== Фасуем Про ===== -->
+  <article class="project">
     <div class="project-header">
-      <div>
-        <h2>Сайт детского психолога — adekvat.online</h2>
-        <p>Коммерческий проект. Многостраничный сайт практикующего детского психолога: подход к работе, библиотека книг с живым поиском на JS, ответы на вопросы родителей, отзывы и запись на приём. Чистый HTML/CSS/JS без фреймворков и сборки.</p>
+      <div class="info">
+        <span class="tag commercial">Коммерческий проект</span>
+        <h3>«Фасуем Про» — контрактная фасовка</h3>
+        <p>Сайт производства из 63 страниц: услуги, оборудование, кейсы. На первом экране — продуктовый ролик: дой-пак собран кодом на Three.js, наполняется и запаивается морф-таргетами, стоит в студийном HDR-свете под постобработкой (SMAA, виньетка, хроматические аберрации), а всей сценой управляет скролл. Отдельная страница — интерактивный 3D-конструктор пакета.</p>
       </div>
       <div class="btns">
-        <a class="code" href="https://github.com/Timofeyhh/adekvat-online" target="_blank" rel="noopener">Код</a>
+        <a class="open" href="https://fasovka.site/" target="_blank" rel="noopener">Открыть сайт →</a>
+      </div>
+    </div>
+    <div class="stack">
+      <i>HTML/CSS/JS</i><i>Three.js</i><i>postprocessing</i><i>Lenis</i><i>WebGL</i><i>SEO-разметка</i>
+    </div>
+    <div class="frame-wrap">
+      <iframe src="https://fasovka.site/" loading="lazy" referrerpolicy="no-referrer"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        onerror="this.closest('.frame-wrap').querySelector('.frame-fallback').style.display='flex'"></iframe>
+      <div class="frame-fallback" style="display:none;">
+        Сайт не встраивается в этот блок (защита от iframe).
+        <a href="https://fasovka.site/" target="_blank" rel="noopener">Открыть напрямую</a>
+      </div>
+    </div>
+    <div class="hint">Прокрутите внутри рамки — пакет раскроется, наполнится и повернётся. Ещё есть 3D-конструктор на <a href="https://fasovka.site/paket-3d.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">отдельной странице</a>.</div>
+  </article>
+
+  <!-- ===== adekvat.online ===== -->
+  <article class="project">
+    <div class="project-header">
+      <div class="info">
+        <span class="tag commercial">Коммерческий проект</span>
+        <h3>Сайт детского психолога — adekvat.online</h3>
+        <p>Многостраничный сайт практикующего специалиста: подход к работе, библиотека книг с живым поиском на JS, ответы на вопросы родителей, отзывы и запись на приём. Чистый HTML/CSS/JS без фреймворков и сборки — заказчик правит тексты сам.</p>
+      </div>
+      <div class="btns">
         <a class="open" href="https://adekvat.online/index.html" target="_blank" rel="noopener">Открыть сайт →</a>
       </div>
+    </div>
+    <div class="stack">
+      <i>HTML/CSS/JS</i><i>без фреймворков</i><i>адаптив</i><i>формы записи</i>
     </div>
     <div class="frame-wrap">
       <iframe src="https://adekvat.online/index.html" loading="lazy" referrerpolicy="no-referrer"
@@ -217,18 +382,22 @@
         <a href="https://adekvat.online/index.html" target="_blank" rel="noopener">Открыть напрямую</a>
       </div>
     </div>
-  </div>
+  </article>
 
-  <div class="project">
+  <!-- ===== hotiki.ru ===== -->
+  <article class="project">
     <div class="project-header">
-      <div>
-        <h2>«Хотики» — hotiki.ru</h2>
-        <p>Коммерческий проект. Промо-сайт вселенной детской книги: анимированный мир персонажей на CSS (маски, градиенты, keyframes), история, магазин и переход в Telegram-сообщество. Адаптив с упором на мобильные — основная аудитория заходит с телефонов.</p>
+      <div class="info">
+        <span class="tag commercial">Коммерческий проект</span>
+        <h3>«Хотики» — hotiki.ru</h3>
+        <p>Промо-сайт вселенной детской книги: анимированный мир персонажей целиком на CSS — маски, градиенты, keyframes, без единой библиотеки. История, магазин и переход в Telegram-сообщество. Адаптив с упором на мобильные: основная аудитория заходит с телефонов.</p>
       </div>
       <div class="btns">
-        <a class="code" href="https://github.com/Timofeyhh/hotiki" target="_blank" rel="noopener">Код</a>
         <a class="open" href="https://hotiki.ru" target="_blank" rel="noopener">Открыть сайт →</a>
       </div>
+    </div>
+    <div class="stack">
+      <i>HTML/CSS/JS</i><i>CSS-анимация</i><i>mobile-first</i>
     </div>
     <div class="frame-wrap">
       <iframe src="https://hotiki.ru" loading="lazy" referrerpolicy="no-referrer"
@@ -239,46 +408,154 @@
         <a href="https://hotiki.ru" target="_blank" rel="noopener">Открыть напрямую</a>
       </div>
     </div>
-  </div>
+  </article>
 
-  <div class="project">
+  <!-- ===== StartL лендинг ===== -->
+  <article class="project">
     <div class="project-header">
-      <div>
-        <h2>StartL — лендинг для инвесторов</h2>
-        <p>Собственный продукт: дейтинг без свайпов, где люди видят друг друга на живой карте города. Лендинг: 3D-сфера из 2 600 частиц на Three.js с перекраской под секции, GSAP-хореография скролла, инерционный скролл Lenis — всё в одном HTML-файле без сборки. В демо переключи тарифы радиуса 50 м / 1 км / 10 км.</p>
+      <div class="info">
+        <span class="tag own">Свой продукт</span>
+        <h3>StartL — лендинг для инвесторов</h3>
+        <p>Дейтинг без свайпов: люди видят друг друга на живой карте города. Лендинг — 3D-сфера из 2 600 частиц на Three.js, которая перекрашивается под секции, хореография скролла на GSAP и инерционный скролл Lenis. Всё в одном HTML-файле, без сборки.</p>
       </div>
       <div class="btns">
         <a class="code" href="https://github.com/Timofeyhh/startl-landing" target="_blank" rel="noopener">Код</a>
         <a class="open" href="https://timofeyhh.github.io/startl-landing/" target="_blank" rel="noopener">Открыть сайт →</a>
       </div>
     </div>
+    <div class="stack">
+      <i>Three.js</i><i>GSAP</i><i>Lenis</i><i>один файл</i>
+    </div>
     <div class="frame-wrap">
       <iframe src="https://timofeyhh.github.io/startl-landing/" loading="lazy"></iframe>
     </div>
-  </div>
+    <div class="hint">В демо переключите тарифы радиуса: 50 м / 1 км / 10 км.</div>
+  </article>
 
-  <div class="project">
+  <!-- ===== Лесной квартал ===== -->
+  <article class="project">
     <div class="project-header">
-      <div>
-        <h2>«Лесной квартал» — 3D-тур по дому</h2>
-        <p>Собственный проект. Промо-сайт дома в коттеджном посёлке: при скролле камера пролетает сквозь 3D-модель дома — прихожая, гостиная с камином, кухня, спальня, терраса с бассейном. Дом собран кодом на Three.js, все текстуры процедурные (рисуются на canvas), снаружи гроза с дождём и молниями. Один HTML-файл без единой картинки.</p>
+      <div class="info">
+        <span class="tag own">Свой проект</span>
+        <h3>«Лесной квартал» — 3D-тур по дому</h3>
+        <p>Промо-сайт дома в коттеджном посёлке: при скролле камера пролетает сквозь дом — прихожая, гостиная с камином, кухня, спальня, терраса с бассейном. Дом собран кодом на Three.js, все текстуры процедурные (рисуются на canvas), снаружи идёт гроза с дождём и молниями. Один HTML-файл без единой картинки.</p>
       </div>
       <div class="btns">
         <a class="code" href="https://github.com/Timofeyhh/atrium-estate" target="_blank" rel="noopener">Код</a>
         <a class="open" href="https://timofeyhh.github.io/atrium-estate/" target="_blank" rel="noopener">Открыть сайт →</a>
       </div>
     </div>
+    <div class="stack">
+      <i>Three.js</i><i>процедурные текстуры</i><i>canvas</i><i>один файл</i>
+    </div>
     <div class="frame-wrap">
       <iframe src="https://timofeyhh.github.io/atrium-estate/" loading="lazy"></iframe>
     </div>
+  </article>
+
+  <div class="section-head" id="apps">
+    <h2>Приложения и боты</h2>
+    <span>работают на сервере — демо в рамку не встроить</span>
   </div>
 
+  <div class="apps">
+
+    <!-- ===== StartL MVP ===== -->
+    <article class="app">
+      <span class="tag own">Свой продукт</span>
+      <h3>StartL — рабочее MVP гео-знакомств</h3>
+      <p>Не лендинг, а живое приложение: один Go-бинарник, внутри HTTP API, SQLite и PWA-фронтенд. Без внешних сервисов и без CGO — собирается и разворачивается где угодно.</p>
+      <ul>
+        <li>Регистрация и вход: bcrypt, токен-сессии</li>
+        <li>Радар людей рядом: расстояние по формуле гаверсинуса, радиус зависит от тарифа</li>
+        <li>Чат 1:1 с хранением истории в базе</li>
+        <li>Чёрный список с двусторонней невидимостью</li>
+        <li>Демо-режим, если браузер не отдал геолокацию</li>
+      </ul>
+      <div class="stack">
+        <i>Go</i><i>net/http</i><i>SQLite</i><i>bcrypt</i><i>PWA</i>
+      </div>
+    </article>
+
+    <!-- ===== VPS-бот ===== -->
+    <article class="app">
+      <span class="tag commercial">Коммерческий проект</span>
+      <h3>VPS-бот — выдача и биллинг серверов</h3>
+      <p>Клиент выбирает тариф в Telegram, оплачивает — бот сам создаёт машину, присылает IP и root-пароль и даёт кнопки управления. Весь путь заказ → оплата → сервер закрыт сквозным тестом.</p>
+      <ul>
+        <li>Оплата: счета, зачисление, идемпотентные вебхуки</li>
+        <li>Питание, переустановка ОС, удаление и продление</li>
+        <li>Возврат на баланс, если сервер не поднялся — ровно один раз</li>
+        <li>Root-пароли зашифрованы в базе (AES-256-GCM)</li>
+        <li>Гипервизор за интерфейсом: Proxmox и имитатор взаимозаменяемы</li>
+      </ul>
+      <div class="stack">
+        <i>TypeScript</i><i>Node.js</i><i>grammY</i><i>Fastify</i><i>PostgreSQL</i><i>Zod</i>
+      </div>
+    </article>
+
+    <!-- ===== Фриланс-бот ===== -->
+    <article class="app">
+      <span class="tag own">Свой проект</span>
+      <h3>Бот автопоиска заказов с ИИ</h3>
+      <p>Сам обходит фриланс-площадки, отсеивает мусор, оценивает оставшееся через LLM по шкале 1–10 и присылает карточку с кнопками «Отправить / Редактировать / Пропустить». Решение всегда за человеком.</p>
+      <ul>
+        <li>Парсеры Freelance.ru, Kwork, Яндекс Исполнителей и Telegram-каналов</li>
+        <li>Двухступенчатый фильтр: жёсткие правила, затем ИИ</li>
+        <li>Дедупликация по паре «площадка + id», дублей не бывает</li>
+        <li>Журнал по каждому заказу: найден → оценён → черновик → отправлен</li>
+      </ul>
+      <div class="stack">
+        <i>Python</i><i>aiogram 3</i><i>asyncio</i><i>aiohttp</i><i>BeautifulSoup</i><i>Telethon</i><i>SQLite</i><i>LLM API</i>
+      </div>
+    </article>
+
+    <!-- ===== Grok pool ===== -->
+    <article class="app">
+      <span class="tag own">Свой проект</span>
+      <h3>Пул общих аккаунтов</h3>
+      <p>Бот выдаёт аккаунт из общего пула одному человеку на 24 часа, потом сам забирает обратно. Задача интересна конкуренцией: десять человек могут нажать кнопку в одну и ту же секунду.</p>
+      <ul>
+        <li>Атомарная выдача через <code>BEGIN IMMEDIATE</code> — двоим один аккаунт не достанется</li>
+        <li>Планировщик раз в минуту возвращает просроченные</li>
+        <li>Досрочный возврат кнопкой</li>
+        <li>Админка: добавление аккаунтов, статистика пула</li>
+      </ul>
+      <div class="stack">
+        <i>Python</i><i>python-telegram-bot</i><i>APScheduler</i><i>SQLite</i>
+      </div>
+    </article>
+
+    <!-- ===== Dialog Spy ===== -->
+    <article class="app">
+      <span class="tag own">Свой проект</span>
+      <h3>Архив удалённых сообщений</h3>
+      <p>Бот сохраняет входящие в личных чатах и, когда собеседник удаляет сообщение, присылает владельцу копию. Работает на официальном Telegram Business API, а не юзерботом на MTProto — аккаунту ничего не грозит.</p>
+      <ul>
+        <li>Событие об удалении приходит без содержимого — нужен свой кэш текста и вложений</li>
+        <li>Правки показываются как «было → стало»</li>
+        <li>Владелец сам выбирает, какие чаты подключить</li>
+        <li>Автозапуск через launchd, логи на диск</li>
+      </ul>
+      <div class="stack">
+        <i>Python</i><i>aiogram 3</i><i>Telegram Business API</i><i>aiosqlite</i><i>Docker</i>
+      </div>
+    </article>
+
+  </div>
 
 </main>
 
 <footer>
-  © 2026 Макаров Тимофей. Портфолио размещено бесплатно (например, Vercel / Netlify / GitHub Pages — без оплаты и без обязательных условий для статического сайта такого размера).
+  <span>© 2026 Макаров Тимофей</span>
+  <span>
+    <a href="mailto:makarovtimofej756@gmail.com">makarovtimofej756@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/Timofeyhh" target="_blank" rel="noopener">GitHub</a>
+  </span>
 </footer>
+
+</div>
 
 </body>
 </html>
