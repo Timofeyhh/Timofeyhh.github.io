@@ -231,6 +231,54 @@
     font-size:13px;
   }
 
+  /* ---------- что сделано списком и скриншоты вместо рамки (сайт, который не встраивается) ---------- */
+  .points{
+    margin:0;
+    padding:0 24px 18px;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+  }
+  .points li{
+    position:relative;
+    padding-left:18px;
+    font-size:13.5px;
+    color:var(--muted);
+    max-width:760px;
+  }
+  .points li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:8px;
+    width:6px;
+    height:6px;
+    border-radius:2px;
+    background:var(--accent);
+    opacity:.65;
+  }
+  .shots{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,.289fr);
+    gap:14px;
+    align-items:start;
+    padding:18px 24px;
+    background:#0a0b0e;
+    border-top:1px solid var(--border);
+  }
+  .shots img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:10px;
+    border:1px solid var(--border);
+  }
+  @media(max-width:620px){
+    .shots{grid-template-columns:1fr;}
+    .shots img + img{max-width:240px;margin:0 auto;}
+  }
+
   /* ---------- карточки приложений и ботов ---------- */
   .apps{
     display:grid;
@@ -317,7 +365,7 @@
   </div>
 
   <div class="facts">
-    <div><b>5</b><span>сайтов онлайн</span></div>
+    <div><b>6</b><span>сайтов онлайн</span></div>
     <div><b>3</b><span>проекта на Three.js</span></div>
     <div><b>6</b><span>Telegram-ботов</span></div>
     <div><b>6</b><span>языков: JS, TS, Python, Go, Swift, Kotlin</span></div>
@@ -330,6 +378,35 @@
     <h2>Сайты</h2>
     <span>живые демо — можно листать и кликать прямо в рамке</span>
   </div>
+
+  <!-- ===== PERSHIKOV ===== -->
+  <article class="project">
+    <div class="project-header">
+      <div class="info">
+        <span class="tag commercial">Коммерческий проект</span>
+        <h3>PERSHIKOV — платформа аналитики крипторынка</h3>
+        <p>Платная платформа автора-аналитика: обзоры рынка, торговые идеи, портфель и исследования по подписке, а рядом графики рынка, которые обновляются сами. Сделал от дизайна до запуска на сервере: вёрстку под телефон и компьютер, оплату подписки, закрытый доступ и админку, в которой автор ведёт сайт сам.</p>
+      </div>
+      <div class="btns">
+        <a class="open" href="https://app.pershikov.io/dashboard" target="_blank" rel="noopener">Открыть сайт →</a>
+      </div>
+    </div>
+    <div class="stack">
+      <i>Next.js</i><i>React</i><i>TypeScript</i><i>PostgreSQL</i><i>Tailwind CSS</i><i>CloudPayments</i><i>nginx</i>
+    </div>
+    <ul class="points">
+      <li>Подписка на месяц и год: оплата картой, автопродление, чеки по 54-ФЗ</li>
+      <li>Платное закрыто на сервере: без подписки текст не попадает даже в код страницы</li>
+      <li>9 графиков рынка: потоки BTC и ETH, ETF, фандинг, стейблкоины, ширина рынка, данные обновляются по расписанию</li>
+      <li>Админка, в которой автор сам публикует материалы и правит главную без программиста</li>
+      <li>Запуск на своём сервере: nginx, SSL, ежедневные бэкапы</li>
+    </ul>
+    <div class="shots">
+      <img src="img/pershikov-desktop.webp" width="1600" height="1000" loading="lazy" alt="PERSHIKOV: рабочий стол на компьютере">
+      <img src="img/pershikov-mobile.webp" width="600" height="1298" loading="lazy" alt="PERSHIKOV: графики рынка на телефоне">
+    </div>
+    <div class="hint">Сайт не встраивается в чужие страницы, поэтому здесь скриншоты открытой части. Живой сайт — по кнопке «Открыть сайт».</div>
+  </article>
 
   <!-- ===== Фасуем Про ===== -->
   <article class="project">
